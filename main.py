@@ -40,7 +40,7 @@ print("""\
 ╚█████╔╝░░╚██╔╝░╚██╔╝░╚█████╔╝  ██████╔╝███████╗███████╗██║░░░░░  ██████╦╝╚█████╔╝░░░██║░░░
 ░╚════╝░░░░╚═╝░░░╚═╝░░░╚════╝░  ╚═════╝░╚══════╝╚══════╝╚═╝░░░░░  ╚═════╝░░╚════╝░░░░╚═╝░░░
 
-**Version: 2.0.0**""")
+**Version: 1.0.0**""")
 wbm=[13,16]
 time.sleep(0.5)
 class client:
@@ -52,7 +52,7 @@ class client:
   stopped = False
   totalcmd = 0
   totaltext = 0
-  recentversion = "v2.0.0"
+  recentversion = "v1.0.0"
   class color:
     purple = '\033[95m'
     okblue = '\033[94m'
