@@ -45,6 +45,6 @@ https://discord.gg/3kTrhbBVQm
 
 **Lastest version: See in version.txt**
 
-**Note: This repository is forked from Nizel-sudo-do discord-selfbot-owo-bot repository. I fixed and upgrade his code. So im NOT the owner of this code but at least im still update this repository every week.**
+**Note: This Repository Is Under GNU General Public License v3.0! Please Don't Use This Repository To Sell Or Else I Will Kill You.**
 
 **Note 2: This Repository Is For Educational Purposes Only. Selfbot are against Discord's ToS and against OwO's Rules! Use It At Your Own Risk!**
