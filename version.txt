@@ -1,0 +1,8 @@
+Current version: 2.0.0
+
+
+ -Added A Lot Of Selfbot Commands.
+ -Added Automatically Update System.
+ -Automatically Show Stat Before Exit Instead Pick Option [3] To Show Stat.
+ -Upgrade Stop If OwO Asked Captcha A Little Bit.
+ 
