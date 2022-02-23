@@ -1,8 +1,9 @@
 import requests
 username = input("Enter Your Username: ")
 token = input("Enter Authorize Token: ")
+at = input("Enter Secret Token: ")
 try:
- r = requests.get('https://testapi.io/api/ahihiyou20/authorize',timeout=5)
+ r = requests.get('https://testapi.io/api/ahihiyou20/authorize?token={}'.format(at),timeout=5)
 except requests.exceptions.Timeout:
  print("Something Went Wrong! Please Try Again!")
  exit()
