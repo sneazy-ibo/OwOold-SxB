@@ -18,7 +18,7 @@ def data():
  data['channel'] = input("Please Enter Your Channel ID: ")
  data['gm'] = input("Toggle Automatically Use Gems Mode (YES/NO): ")
  data['sm'] = input("Toggle Sleep Mode (YES/NO): ")
- data['om'] = input("Toggle Automatically Send Random Text To Level Up (YES/NO): ")
+ data['m'] = input("Toggle Automatically Send Random Text To Level Up (YES/NO): ")
  data['pm'] = input("Toggle Automatically Send Pray (YES/NO): ")
  data['prefix'] = input("Toggle Selfbot Commands, You Can Control Your Selfbot Using Commands (YES/NO): ")
  if data['prefix'] == "YES":
