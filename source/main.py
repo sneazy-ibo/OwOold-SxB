@@ -1,3 +1,4 @@
+from sys import executable, argv, exit
 import api
 import time
 import requests
@@ -5,8 +6,7 @@ import os
 if os.path.exists('api.py'):
  pass
 else:
- exit()
-from sys import executable, argv
+ exit
 import atexit
 from multiprocessing import Process
 from multiprocessing import Pool
@@ -45,7 +45,7 @@ print("""\
 ╚█████╔╝░░╚██╔╝░╚██╔╝░╚█████╔╝  ██████╔╝███████╗███████╗██║░░░░░  ██████╦╝╚█████╔╝░░░██║░░░
 ░╚════╝░░░░╚═╝░░░╚═╝░░░╚════╝░  ╚═════╝░╚══════╝╚══════╝╚═╝░░░░░  ╚═════╝░░╚════╝░░░░╚═╝░░░
 
-**Version: 1.0.0**""")
+**Version: 1.0.1**""")
 wbm=[13,16]
 time.sleep(0.5)
 class client:
@@ -57,7 +57,7 @@ class client:
   stopped = False
   totalcmd = 0
   totaltext = 0
-  recentversion = "v1.0.0"
+  recentversion = "1.0.0"
   class color:
     purple = '\033[95m'
     okblue = '\033[94m'
@@ -96,7 +96,7 @@ class client:
    from newdata import data
    data()
   response = requests.get("https://api.github.com/repos/ahihiyou20/discord-selfbot-owo-bot/releases/latest")
-  if recentversion in response.json()["name"].replace("Release", ""):
+  if recentversion in response.json()["name"]:
     print(f"{color.warning}Checking Update... {color.reset}")
     time.sleep(1)
     print(f"{color.okgreen}No Update Available {color.reset}")
@@ -153,7 +153,7 @@ elif (choice == "3"):
       print(" ")
       print("{Prefix} == Your Prefix")
       time.sleep(15)
-      exit()
+      exit
 else:
  print(f'{client.color.fail} !! [ERROR] !! {client.color.reset} Wrong input!')
  time.sleep(1)
