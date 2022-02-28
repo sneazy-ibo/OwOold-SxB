@@ -1,3 +1,3 @@
-Current version: 1.0.0
+Current version: 1.0.1
 
--Added Key System So People Won't Sell My Code Anymore. Btw Key Is Free! You Can Get It In The Support Server.
+-Upgraded Key System A Bit.
