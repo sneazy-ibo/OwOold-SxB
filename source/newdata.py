@@ -20,13 +20,18 @@ def data():
  data['sm'] = input("Toggle Sleep Mode (YES/NO): ")
  data['em'] = input("Toggle Automatically Send Random Text To Level Up (YES/NO): ")
  data['pm'] = input("Toggle Automatically Send Pray (YES/NO): ")
+ data['alt'] = input("Toggle Automatically Do Quests (YES/NO): ")
+ if data['alt'] == "YES":
+  data['alt'] = input("Enter Your Alternative Account ID To Do Some Specified Quests: ")
+ else:
+  data['alt'] = "None"
  data['prefix'] = input("Toggle Selfbot Commands, You Can Control Your Selfbot Using Commands (YES/NO): ")
  if data['prefix'] == "YES":
   data['prefix'] = input("Enter Your Selfbot Prefix: ")
   data['allowedid'] = input("Do You Want Allow An User To Use Your Selfbot Commands? If Yes Enter The Account ID, Otherwise Enter \"None\": ")
   print("Great! You Can View Selfbot Commands At Option [3] Info At The Main Menu!")
   time.sleep(1)
- if data['prefix'] == "NO":
+ else:
   data['prefix'] = "None"
   data['allowedid'] = "None"
  data['webhook'] = input("Toggle Discord Webhook, Enter Webhook Link If You Want It To Ping You If OwO Asked Captcha. Otherwise Enter \"None\": ")
