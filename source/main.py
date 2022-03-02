@@ -1,12 +1,7 @@
 from sys import executable, argv, exit
-import api
 import time
 import requests
 import os
-if os.path.exists('api.py'):
- pass
-else:
- exit
 import atexit
 from multiprocessing import Process
 from multiprocessing import Pool
@@ -21,15 +16,15 @@ finally:
  from inputimeout import inputimeout,TimeoutOccurred
 if os.name == 'nt':
   import json
-if os.name != 'nt':
+else:
   import simplejson as json
 try:
-  import discum
+  from discum import *
 except:
   from setup import install
   install()
 finally:
-  import discum
+  from discum import *
 try:
  from discord_webhook import DiscordWebhook
 except:
@@ -45,7 +40,7 @@ print("""\
 ╚█████╔╝░░╚██╔╝░╚██╔╝░╚█████╔╝  ██████╔╝███████╗███████╗██║░░░░░  ██████╦╝╚█████╔╝░░░██║░░░
 ░╚════╝░░░░╚═╝░░░╚═╝░░░╚════╝░  ╚═════╝░╚══════╝╚══════╝╚═╝░░░░░  ╚═════╝░░╚════╝░░░░╚═╝░░░
 
-**Version: 1.0.1**""")
+**Version: 1.0.2**""")
 wbm=[13,16]
 time.sleep(0.5)
 class client:
@@ -57,7 +52,7 @@ class client:
   stopped = False
   totalcmd = 0
   totaltext = 0
-  recentversion = "1.0.0"
+  recentversion = "1.0.2"
   class color:
     purple = '\033[95m'
     okblue = '\033[94m'
@@ -90,11 +85,13 @@ class client:
         allowedid = data["allowedid"]
         webhook = data["webhook"]
         webhookping = data["webhookping"]
+        alt = data["alt"]
   if data["token"] and data["channel"] == 'nothing':
    print(f"{color.fail} !!! [ERROR] !!! {color.reset} Please Enter Information To Continue")
    time.sleep(1)
    from newdata import data
    data()
+   os.execl(executable, executable, *argv)
   response = requests.get("https://api.github.com/repos/ahihiyou20/discord-selfbot-owo-bot/releases/latest")
   if recentversion in response.json()["name"]:
     print(f"{color.warning}Checking Update... {color.reset}")
@@ -300,7 +297,7 @@ def gems():
           tier[0].append(gem)
         elif 64 < gem < 72:
           tier[1].append(gem)
-        elif 71 < gem < 79:
+        elif 71 < gem <	 79:
           tier[2].append(gem)
       for level in range(0,3):
         if not len(tier[level]) == 0 and client.stopped != True:
@@ -309,6 +306,49 @@ def gems():
           time.sleep(7)
  if client.gm == "NO":
       pass
+def quests():
+  if client.alt != "None" and client.stopped != True:
+    bot.typingAction(str(client.channel))
+    time.sleep(5)
+    bot.sendMessage(str(client.channel), "owo quest")
+    print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} owo quest")
+    client.totalcmd = client.totalcmd + 1
+    time.sleep(7)
+    msgs=bot.getMessages(str(client.channel), num=5)
+    msgs=json.loads(msgs.text)
+    quest = ""
+    for m in msgs:
+      if m['author']['id']=='408785106942164992' and m['content'] == "" and 'Quest Log' in m['embeds'][0]['author']['name']:
+        quest = m['embeds'][0]['description']
+    if not quest:
+       time.sleep(5)
+    else:
+          if "Have a friend pray you" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Pray Quest(s)...")
+              bot.sendMessage("465978474163601436", "owo quest")
+              time.sleep(20)
+          elif "Gamble" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Gamble Quest(s)...")
+              bot.senMessage(str(client.channel), "owo cf 1")
+          elif "Use an action command on someone" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Action Commands Quest(s)...")
+              bot.sendMessage(str(client.channel), "owo kill <@{}>".format(client.alt))
+          elif "Have a friend curse you" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Curse Quest(s)...")
+              bot.sendMessage("465978474163601436", "owo quest")
+              time.sleep(20)
+          elif "Receive a cookie" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Cookie Quest(s)...")
+              bot.sendMessage("465978474163601436", "owo quest")
+              time.sleep(20)
+          elif "Have a friend use an action command on you" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Action Commands Quest(s)...")
+              bot.sendMessage("465978474163601436", "owo quest")
+          elif "Say 'owo'" in quest:
+              print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Say 'OwO' Quest(s)...")
+              bot.sendMessage(str(client.channel), "owo")
+          else:
+              print("{at()}{client.color.okcyan}[INFO] Found No Quests")
 @bot.gateway.command
 def othercommands(resp):
  prefix = client.prefix
@@ -375,6 +415,7 @@ def loopie(resp):
   pray = 0
   owo=pray
   gem=pray
+  quest = pray
   main=time.time()
   while x:
       runner()
@@ -393,6 +434,9 @@ def loopie(resp):
         time.sleep(random.randint(500, 700))
       if client.sm == "NO":
        pass
+      if time.time() - quest > random.randint(120, 200):
+        quests()
+        quest = time.time()
 def defination1():
   global once
   if not once:
@@ -415,7 +459,7 @@ def atexit():
  print(f"{client.color.purple} [3] Exit    {client.color.reset}")
  choice = None
  try:
-  print("Automatically Pick Option [4] In 10 Seconds.")
+  print("Automatically Pick Option [3] In 10 Seconds.")
   choice = inputimeout(prompt='Enter Your Choice: ', timeout=10)
  except TimeoutOccurred:
   choice = "4"
