@@ -1,7 +1,12 @@
+import api
 from sys import executable, argv, exit
 import time
 import requests
 import os
+if os.path.exists('api.py'):
+ pass
+else:
+ exit
 import atexit
 from multiprocessing import Process
 from multiprocessing import Pool
