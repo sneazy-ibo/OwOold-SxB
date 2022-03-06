@@ -7,10 +7,22 @@
 
 
 How to setup?
-**Install Packages (Use The Following Command):**
+**Using Exe Methods:**
+
+**Open Folder Named "main". You Will See A File Named "Auto.exe", Open It And Use Without Any Bonus Setup**
+
+**Using Python Methods:**
+
+**Open Folder Named "source". Open A Cmd And Type:**
+
 ```
-python -m pip install -r requirements.txt
+py -m pip install -r requirements.txt
+
 ```
+
+**Then Run main.py, That's All :)**
+
+**To Avoid People Copying My Code And Sell It For Real Money, I Made A Key System, You Need To Join The Support Discord Server And Get The Key (Link Below), It's Totally Free!**
 
 **Or Just Normally Run main.py And It Will Automatically Install Requirements Package For You**
 
@@ -25,13 +37,15 @@ python -m pip install -r requirements.txt
 
 **All Available Settings:**
 
-**> SM (True or False) = Sometimes Your Bot Can Sleep To Avoid OwO's Captcha If You Turn This On.**
+**> SM (YES or NO) = Sometimes Your Bot Can Sleep To Avoid OwO's Captcha If You Turn This On.**
 
-**> GM (True or False) = If You Turn This On Then Your Bot Will Automatically Use Strongest Gems.**
+**> GM (YES or NO) = If You Turn This On Then Your Bot Will Automatically Use Strongest Gems.**
 
-**> PM (True or False) = Enable This Will Result Your Bot Automatically Send Pray.**
+**> PM (YES or NO) = Enable This Will Result Your Bot Automatically Send Pray.**
 
-**> EM (True or False) = Send Random Text Sometimes To Level Up If You Turn It On.**
+**> EM (YES or NO) = Send Random Text Sometimes To Level Up If You Turn It On.**
+
+**> Alt (ID) = Automatically Do Quests, Just Enter Your Alternative Account ID (To Do Some Specified Quest), Also Some Quests Need To Send To OwO Support Discord Server To Do So.**
 
 **> Sent Captcha Alert To Discord Webhook And Ping The User**
 
