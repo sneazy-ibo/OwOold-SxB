@@ -7,6 +7,7 @@
 
 
 How to setup?
+
 **Using Exe Methods:**
 
 **Open Folder Named "main". You Will See A File Named "Auto.exe", Open It And Use Without Any Bonus Setup**
