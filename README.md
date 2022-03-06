@@ -18,7 +18,6 @@ How to setup?
 
 ```
 py -m pip install -r requirements.txt
-
 ```
 
 **Then Run main.py, That's All :)**
