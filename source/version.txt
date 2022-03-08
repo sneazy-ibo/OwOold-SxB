@@ -1,6 +1,6 @@
-Current version: 1.0.2
+Current version: 1.0.3
 
--Fixed Some Bugs.
--Fixed Key System A Bit.
--Added Automatically Do Quests, Remember DO NOT Lock Any Quests. Btw This Quest System Can Only Do Some Quest, Receive Cookies, Pray, Someone Use Action Command On You Quests Will Be Send To OwO's Discord Server (Channel Quest Help) To Complete.
--Make The Selfbots Run Faster A Bit By Change Some Code Not Really Pythonic...
+-Fixed Gems Issues.
+-Fixed Some Quests Issue.
+-Fixed Api Issues.
+-Fixed Some Print Issue.
