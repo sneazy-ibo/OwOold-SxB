@@ -45,7 +45,7 @@ print("""\
 ╚█████╔╝░░╚██╔╝░╚██╔╝░╚█████╔╝  ██████╔╝███████╗███████╗██║░░░░░  ██████╦╝╚█████╔╝░░░██║░░░
 ░╚════╝░░░░╚═╝░░░╚═╝░░░╚════╝░  ╚═════╝░╚══════╝╚══════╝╚═╝░░░░░  ╚═════╝░░╚════╝░░░░╚═╝░░░
 
-**Version: 1.0.2**""")
+**Version: 1.0.3**""")
 wbm=[13,16]
 time.sleep(0.5)
 class client:
@@ -54,10 +54,10 @@ class client:
     "owo hunt",
     "owo battle"
     ]
-  stopped = False
   totalcmd = 0
   totaltext = 0
-  recentversion = "1.0.2"
+  stopped = False
+  recentversion = "1.0.3"
   class color:
     purple = '\033[95m'
     okblue = '\033[94m'
@@ -217,24 +217,24 @@ def issuechecker(resp):
        print(f'{at()}{client.color.warning} !! [CAPTCHA] !! {client.color.reset} CAPTCHA   ACTION REQUİRED')
        return "captcha"
 def runner():
-   if client.stopped != True:
+  if client.stopped != True:
         global wbm
         command=random.choice(client.commands)
         command2=random.choice(client.commands)
         bot.typingAction(str(client.channel))
         bot.sendMessage(str(client.channel), command)
         print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} {command}")
-        client.totalcmd = client.totalcmd + 1
+        client.totalcmd += 1
         if not command2==command and client.stopped != True:
           bot.typingAction(str(client.channel))
           time.sleep(13)
           bot.sendMessage(str(client.channel), command2)
           print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} {command2}")
-          client.totalcmd = client.totalcmd + 1
+          client.totalcmd += 1
         time.sleep(random.randint(wbm[0],wbm[1]))
 def owoexp():
- if client.em == "YES":
-  if client.stopped != True:
+ if client.stopped != True:
+  if client.em == "YES":
         global wbm
         try:
          response = requests.get("https://quote-garden.herokuapp.com/api/v3/quotes/random")
@@ -251,29 +251,34 @@ def owoexp():
  if client.em == "NO":
         pass
 def owopray():
- if client.pm == "YES":
-  if client.stopped != True:
+ if client.stopped != True:
+  if client.pm == "YES":
     bot.sendMessage(str(client.channel), "owo pray")
     print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} owo pray")
-    client.totalcmd = client.totalcmd + 1
+    client.totalcmd += 1
     time.sleep(13)
  if client.pm == "NO":
    pass
 def gems():
- if client.gm == "YES":
-  if client.stopped != True:
+ if client.stopped != True:
+  if client.gm == "YES":
     bot.typingAction(str(client.channel))
     time.sleep(5)
     bot.sendMessage(str(client.channel), "owo inv")
     print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} owo inv")
-    client.totalcmd = client.totalcmd + 1
+    client.totalcmd += 1
     time.sleep(7)
     msgs=bot.getMessages(str(client.channel), num=5)
     msgs=json.loads(msgs.text)
     inv = 0
-    for msgone in msgs:
-      if msgone['author']['id']=='408785106942164992' and 'Inventory' in msgone['content']:
-        inv=re.findall(r'`(.*?)`', msgone['content'])
+    length = len(msgs)
+    i = 0
+    while i < length:
+     if msgs[i]['author']['id']=='408785106942164992' and 'Inventory' in msgs[i]['content']:
+        inv=re.findall(r'`(.*?)`', msgs[i]['content'])
+        i = length
+     else:
+        i += 1
     if not inv:
        time.sleep(5)
     else:
@@ -312,26 +317,32 @@ def gems():
  if client.gm == "NO":
       pass
 def quests():
-  if client.alt != "None" and client.stopped != True:
+ if client.stopped != True:
+  if client.alt != "None":
     bot.typingAction(str(client.channel))
     time.sleep(5)
     bot.sendMessage(str(client.channel), "owo quest")
     print(f"{at()}{client.color.okgreen} [SENT] {client.color.reset} owo quest")
-    client.totalcmd = client.totalcmd + 1
+    client.totalcmd += 1
     time.sleep(7)
     msgs=bot.getMessages(str(client.channel), num=5)
     msgs=json.loads(msgs.text)
     quest = ""
-    for m in msgs:
-      if m['author']['id']=='408785106942164992' and m['content'] == "" and 'Quest Log' in m['embeds'][0]['author']['name']:
-        quest = m['embeds'][0]['description']
+    length = len(msgs)
+    i = 0
+    while i < length:
+     if msgs[i]['author']['id']=='408785106942164992' and msgs[i]['content'] == "" and 'Quest Log' in msgs[i]['embeds'][0]['author']['name']:
+        quest = msgs[i]['embeds'][0]['description']
+        i = length
+     else:
+        i += 1
     if not quest:
        time.sleep(5)
     else:
-          if "Have a friend pray you" in quest:
+          if "Have a friend pray to you" in quest:
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Pray Quest(s)...")
               bot.sendMessage("465978474163601436", "owo quest")
-              time.sleep(20)
+              time.sleep(30)
           elif "Gamble" in quest:
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Gamble Quest(s)...")
               bot.senMessage(str(client.channel), "owo cf 1")
@@ -341,11 +352,11 @@ def quests():
           elif "Have a friend curse you" in quest:
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Curse Quest(s)...")
               bot.sendMessage("465978474163601436", "owo quest")
-              time.sleep(20)
+              time.sleep(30)
           elif "Receive a cookie" in quest:
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Cookie Quest(s)...")
               bot.sendMessage("465978474163601436", "owo quest")
-              time.sleep(20)
+              time.sleep(30)
           elif "Have a friend use an action command on you" in quest:
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Action Commands Quest(s)...")
               bot.sendMessage("465978474163601436", "owo quest")
@@ -353,12 +364,11 @@ def quests():
               print(f"{at()}{client.color.okblue} [INFO]{client.color.reset} Doing Say 'OwO' Quest(s)...")
               bot.sendMessage(str(client.channel), "owo")
           else:
-              print("{at()}{client.color.okcyan}[INFO] Found No Quests")
+              print(f"{at()}{client.color.okcyan} [INFO]{client.color.reset} Found No Quests")
 @bot.gateway.command
 def othercommands(resp):
  prefix = client.prefix
- if client.stopped == False:
-  if resp.event.message:
+ if resp.event.message:
    m = resp.parsed.auto()
    if m['author']['id'] == bot.gateway.session.user['id'] or m['channel_id'] == client.channel and m['author']['id'] == client.allowedid:
     if prefix == "None":
@@ -439,7 +449,7 @@ def loopie(resp):
         time.sleep(random.randint(500, 700))
       if client.sm == "NO":
        pass
-      if time.time() - quest > random.randint(120, 200):
+      if time.time() - quest > random.randint(200, 300):
         quests()
         quest = time.time()
 def defination1():
@@ -454,7 +464,6 @@ def defination1():
 bot.gateway.run(auto_reconnect=True)
 @atexit.register
 def atexit():
- client.stopped = True
  print(f"{client.color.okgreen}Total Number Of Commands Executed: {client.totalcmd}{client.color.reset}")
  time.sleep(0.5)
  print(f"{client.color.okgreen}Total Number Of Random Text Sent: {client.totaltext}{client.color.reset}")
